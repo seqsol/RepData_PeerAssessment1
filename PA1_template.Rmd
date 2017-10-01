@@ -135,3 +135,29 @@ library(grid)
 g<-ggplot(interval.steps.v2, aes(interval, avg.steps))
 g+ geom_line(color="blue")+facet_wrap(~what.day,nrow=2, strip.position="top")+labs(x="Interval", y="Number of average steps")+theme(strip.background = element_rect(colour = "black", fill="#F1DABC"), strip.text.x = element_text(size = 12), panel.spacing = unit(0, "lines"))
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
