@@ -2,8 +2,8 @@
 title: "Reproducible Research: Peer Assessment 1"
 author: "Xiaolong He"
 output: 
-  html_document:
-    keep_md: true
+    html_document:
+        keep_md: true
 ---
 
 ## Task 1: Loading and preprocessing the data 
@@ -31,8 +31,6 @@ The second part of the task is  to plot histogram of the total number of steps t
 ```{r task 2 pt2, echo=TRUE}
 # Draw histogram of total steps per day
 hist(day.steps$total.steps, xlab="Total steps per day", main="Histogram of total steps per day")
-dev.copy(png, "histogram-1.png")
-dev.off()
 ```
 
 The third part of the task is to calculate and report the mean and median of the total number of steps taken per day
@@ -54,8 +52,6 @@ interval.steps <- activity %>%
 
 # Make a time series plot of 5-minute interval and average number of steps
 with(interval.steps, plot(interval, avg.steps, type="l", xlab="5 minutes intervals", ylab="Average steps"))
-dev.copy(png, "timeseries-1.png")
-dev.off()
 ```
 
 The second part of the task is to find the 5-minute interval that has the maximum average number of steps
@@ -94,8 +90,6 @@ new.day.steps <- activity.v2 %>%
 
 # Draw histogram
 hist(new.day.steps$total.steps, xlab="Total steps per day", main="Histogram of total steps per day")
-dev.copy(png, "histogram-2.png")
-dev.off()
 
 # Calculate and report the mean and median total number of steps taken per day
 mean.day.steps <- mean(new.day.steps$total.steps)
@@ -140,6 +134,4 @@ library(ggplot2)
 library(grid)
 g<-ggplot(interval.steps.v2, aes(interval, avg.steps))
 g+ geom_line(color="blue")+facet_wrap(~what.day,nrow=2, strip.position="top")+labs(x="Interval", y="Number of average steps")+theme(strip.background = element_rect(colour = "black", fill="#F1DABC"), strip.text.x = element_text(size = 12), panel.spacing = unit(0, "lines"))
-dev.copy(png, "timeseries-2.png")
-dev.off()
 ```
