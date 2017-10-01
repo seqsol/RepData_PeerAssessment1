@@ -51,7 +51,7 @@ The second part of the task is  to plot histogram of the total number of steps t
 hist(day.steps$total.steps, xlab="Total steps per day", main="Histogram of total steps per day")
 ```
 
-![](PA1_template_files/figure-html/task 2 pt2-1.png)<!-- -->
+![](PA1_template_files/figure-html/task2_pt2-1.png)<!-- -->
 
 The third part of the task is to calculate and report the mean and median of the total number of steps taken per day
 
@@ -87,7 +87,7 @@ interval.steps <- activity %>%
 with(interval.steps, plot(interval, avg.steps, type="l", xlab="5 minutes intervals", ylab="Average steps"))
 ```
 
-![](PA1_template_files/figure-html/task 3 pt1-1.png)<!-- -->
+![](PA1_template_files/figure-html/task3_pt1-1.png)<!-- -->
 
 The second part of the task is to find the 5-minute interval that has the maximum average number of steps
 
@@ -139,7 +139,7 @@ new.day.steps <- activity.v2 %>%
 hist(new.day.steps$total.steps, xlab="Total steps per day", main="Histogram of total steps per day")
 ```
 
-![](PA1_template_files/figure-html/task 4 pt4-1.png)<!-- -->
+![](PA1_template_files/figure-html/task4_pt4-1.png)<!-- -->
 
 ```r
 # Calculate and report the mean and median total number of steps taken per day
@@ -200,7 +200,7 @@ g<-ggplot(interval.steps.v2, aes(interval, avg.steps))
 g+ geom_line(color="blue")+facet_wrap(~what.day,nrow=2, strip.position="top")+labs(x="Interval", y="Number of average steps")+theme(strip.background = element_rect(colour = "black", fill="#F1DABC"), strip.text.x = element_text(size = 12), panel.spacing = unit(0, "lines"))
 ```
 
-![](PA1_template_files/figure-html/task 5 pt2-1.png)<!-- -->
+![](PA1_template_files/figure-html/task5_pt2-1.png)<!-- -->
 
 
 

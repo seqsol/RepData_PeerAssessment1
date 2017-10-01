@@ -8,7 +8,7 @@ output:
 
 ## Task 1: Loading and preprocessing the data 
 Below are codes for this task:
-```{r data, echo=TRUE}
+```{r task1, echo=TRUE}
 # Load data into an R object
 activity <- read.csv("activity.csv", header=TRUE)
 
@@ -20,7 +20,7 @@ activity <- tbl_df(activity)
 ## Task 2: What is mean total number of steps taken per day?
 
 The first part of the task is to calculate the total number of steps taken per day
-```{r task2 pt1, echo=TRUE}
+```{r task2_pt1, echo=TRUE}
 # Calculate the number of total steps taken per day
 day.steps <- activity %>%
     group_by(date) %>%
@@ -28,13 +28,13 @@ day.steps <- activity %>%
 ```
 
 The second part of the task is  to plot histogram of the total number of steps taken each day:
-```{r task 2 pt2, echo=TRUE}
+```{r task2_pt2, echo=TRUE}
 # Draw histogram of total steps per day
 hist(day.steps$total.steps, xlab="Total steps per day", main="Histogram of total steps per day")
 ```
 
 The third part of the task is to calculate and report the mean and median of the total number of steps taken per day
-```{r task 2 pt3, echo=TRUE}
+```{r task2_pt3, echo=TRUE}
 mean.day.steps <- mean(day.steps$total.steps)
 median.day.steps <- median(day.steps$total.steps)
 print(paste("The mean of the total number of steps taken per day is", format(mean.day.steps)))
@@ -44,7 +44,7 @@ print(paste("The median number of the total steps taken per day is", format(medi
 ## Task 3: What is the average daily activity pattern?
 
 The first part of the task is to make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
-```{r task 3 pt1, echo=TRUE}
+```{r task3_pt1, echo=TRUE}
 # Calculate the average number of steps taken for each 5-minute interval across all days
 interval.steps <- activity %>%
     group_by(interval) %>%
@@ -55,7 +55,7 @@ with(interval.steps, plot(interval, avg.steps, type="l", xlab="5 minutes interva
 ```
 
 The second part of the task is to find the 5-minute interval that has the maximum average number of steps
-```{r task 3 pt 2, echo=TRUE}
+```{r task3_pt2, echo=TRUE}
 # Find the interval that has the maximum average number of steps
 interval.max <- interval.steps$interval[which.max(interval.steps$avg.steps)]
 print(paste("The interval that has the maximum average number of steps is", interval.max, ", which is between 8:30 and 8:35"))
@@ -64,7 +64,7 @@ print(paste("The interval that has the maximum average number of steps is", inte
 ## Task 4: Imputing missing values
 
 The first part of the task is to calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
-```{r task 4 pt1, echo=TRUE}
+```{r task4_pt1, echo=TRUE}
 # Find the number of NAs in the dataset
 total.NAs <- sum(is.na(activity$steps)) # Total NAs: 2304
 print(paste("There are", total.NAs, "missing values in the dataset"))
@@ -74,7 +74,7 @@ The second part of the task is to devise a strategy for filling in all of the mi
 In this practice, I replace NAs in each interval with the average numbers of steps of corresponding intervals
 
 The third part of the task is to create a new dataset that is equal to the original dataset but with the missing data filled in
-```{r task 4 pt 3, echo=TRUE}
+```{r task4_pt3, echo=TRUE}
 # Replace the NAs with the average numbers of steps of corresponding intervals, the resulting new dataset is activity.v2
 activity.v2 <- activity %>%
     group_by(interval) %>%
@@ -82,7 +82,7 @@ activity.v2 <- activity %>%
 ```
 
 The fourth part of the task is to make a histogram of the total number of steps taken each day and calculate and report the mean and median total number of steps taken per day
-```{r task 4 pt4, echo=TRUE}
+```{r task4_pt4, echo=TRUE}
 # Calculate the number of total steps taken per day in the new dataset
 new.day.steps <- activity.v2 %>%
     group_by(date) %>%
@@ -103,7 +103,7 @@ The new mean and median values differ from those of the original dataset. Imputi
 ## Task 5: Are there differences in activity patterns between weekdays and weekends?
 
 The first part of the  task is to create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day
-```{r task 5 pt1, echo=TRUE}
+```{r task5_pt1, echo=TRUE}
 # Create a new factor variable indicating whether a given date is a weekday or a weekend 
 
 weekday <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
@@ -123,7 +123,7 @@ activity.v3 <- activity.v2 %>%
 ```
 
 The second part of the task is to make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis)
-```{r task 5 pt2, echo=TRUE}
+```{r task5_pt2, echo=TRUE}
 # Calculate the average number of steps taken for each 5-minute interval across all weekdays and or weekend days
 interval.steps.v2 <- activity.v3 %>%
     group_by(what.day, interval) %>%
